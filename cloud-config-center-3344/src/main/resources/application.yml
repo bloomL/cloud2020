@@ -8,14 +8,28 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:bloomL/springcloud-config.git
+          # uri: git@github.com:bloomL/springcloud-config.git
+          uri: https://github.com/bloomL/springcloud-config.git
           #搜索目录
           search-paths:
             - springcloud-config
           # 读取分支
           default-label: master
+  # rabbitmq相关配置
+  rabbitmq:
+    host: 47.111.250.196
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
     service-url:
      defaultZone: http://eureka7001.com:7001/eureka
+
+# rabbitmq配置，暴露bus刷新配置的端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
